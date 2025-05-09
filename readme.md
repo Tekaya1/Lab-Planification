@@ -88,3 +88,143 @@
 - 🔍 **Surveillance** : `watch`
 - 🗑️ **Suppression** : `atrm`
 - 📂 **Vérification des fichiers** : `cat`
+
+## Exercice 2 : Planification de tâches avec Cron
+
+### Étapes à suivre
+
+1. **Ouvrir la crontab avec l'éditeur de texte par défaut**  
+    Utilisez la commande suivante :  
+    ```bash
+    crontab -e
+    ```
+
+2. **Ajouter une tâche récurrente**  
+    Insérez la ligne suivante dans l'éditeur :  
+    ```bash
+    */2 08-20 * * Mon-Fri /bin/date >> my_first_cron_job.txt
+    ```
+    Ensuite, appuyez sur `Échap` et tapez `:wq` pour enregistrer et quitter l'éditeur.
+
+3. **Vérifier les tâches récurrentes planifiées**  
+    Utilisez la commande :  
+    ```bash
+    crontab -l
+    ```
+
+4. **Vérifier le contenu du fichier généré**  
+    Assurez-vous que le fichier contient la sortie de la commande `date` :  
+    ```bash
+    cat my_first_cron_job.txt
+    ```
+
+5. **Supprimer toutes les tâches récurrentes**  
+    Utilisez la commande :  
+    ```bash
+    crontab -r
+    ```
+
+6. **Confirmer la suppression des tâches**  
+    Vérifiez qu'aucune tâche n'est planifiée :  
+    ```bash
+    crontab -l
+    ```
+
+### Icônes pour les commandes
+- 🕒 **Planification récurrente** : `crontab`
+- 📋 **Liste des tâches** : `crontab -l`
+- 🗑️ **Suppression des tâches** : `crontab -r`
+- 📂 **Vérification des fichiers** : `cat`
+## Exercice 3 : Planification avancée avec Cron
+
+### Étapes à suivre
+
+1. **Planifier un job annuel pour le 2 février à 9h00**  
+    Ouvrez la crontab avec :  
+    ```bash
+    crontab -e
+    ```
+    Ajoutez la ligne suivante :  
+    ```bash
+    0 9 2 2 * /local/bin/annual_backup
+    ```
+
+2. **Planifier un job pour afficher "tekup" toutes les cinq minutes, chaque vendredi de juillet entre 9h et 17h**  
+    Ouvrez la crontab avec :  
+    ```bash
+    crontab -e
+    ```
+    Ajoutez la ligne suivante :  
+    ```bash
+    */5 9-16 * 7 5 echo "tekup"
+    0 17 * 7 5 echo "tekup"
+    ```
+
+3. **Planifier un job quotidien pour exécuter `/local/bin/daily_report` à 23h58**  
+    Ouvrez la crontab avec :  
+    ```bash
+    crontab -e
+    ```
+    Ajoutez la ligne suivante :  
+    ```bash
+    58 23 * * 1-5 /local/bin/daily_report
+    ```
+
+4. **Planifier un job pour envoyer un email avec `mutt` tous les jours ouvrables à 9h00**  
+    Ouvrez la crontab avec :  
+    ```bash
+    crontab -e
+    ```
+    Ajoutez la ligne suivante :  
+    ```bash
+    0 9 * * 1-5 echo "Checking in" | mutt -s "Daily Update" boss@example.com
+    ```
+    ### Planification de tâches supplémentaires avec Cron
+
+    1. **Planifier un job pour exécuter le script `full-backup` chaque 10 juin à 08:30**  
+        Ouvrez la crontab avec :  
+        ```bash
+        crontab -e
+        ```  
+        Ajoutez la ligne suivante :  
+        ```bash
+        30 8 10 6 * /path/to/full-backup
+        ```
+
+    2. **Planifier une tâche pour écrire la date et l'heure dans un fichier nommé `date` toutes les 2 heures**  
+        Ouvrez la crontab avec :  
+        ```bash
+        crontab -e
+        ```  
+        Ajoutez la ligne suivante :  
+        ```bash
+        2  8-11/2,14-17/2 * * * echo date >>deta
+        ```
+
+    3. **Planifier une tâche pour écrire le nom d'utilisateur connecté dans un fichier `user` toutes les 30 secondes**  
+        Note : Les tâches avec une fréquence inférieure à une minute nécessitent une approche alternative.  
+        Ajoutez la ligne suivante dans la crontab :  
+        ```bash
+        * * * * * sleep 30; whoami >> /path/to/user
+        ```
+        ```
+
+    4. **Provoquer un reboot de la machine chaque 1er et 15 du mois à 02:30**  
+        Ouvrez la crontab avec :  
+        ```bash
+        crontab -e
+        ```  
+        Ajoutez la ligne suivante :  
+        ```bash
+        30 2 1,15 * * /sbin/reboot
+        ```
+
+    5. **Écrire "hello" dans un fichier `test` tous les quarts d'heure de 15h à 19h, du lundi au vendredi, uniquement en 1ère quinzaine du troisième trimestre**  
+        Ouvrez la crontab avec :  
+        ```bash
+        crontab -e
+        ```  
+        Ajoutez la ligne suivante :  
+        ```bash
+        */15 15-19 1-15 7-9 1-5 echo "hello" >> test //ac corriger
+        ```
