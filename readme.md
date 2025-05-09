@@ -14,7 +14,7 @@
     Planifiez un job pour enregistrer la sortie de la commande `date` dans `/student/myjob.txt` :  
     ```bash
     at now + 3 minutes
-    ```
+    ```bash
     at> echo date > /student/myjob.txt
     ```
 
